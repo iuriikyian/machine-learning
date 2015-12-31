@@ -1,7 +1,8 @@
 #cost of single variable
-X = [3;5;8];
+X = [3;5;7];
 Y = [6;8;11];
 
+plot(X, Y);
 c = cost_m(X, Y, [2; 1])
 
 %cost of 2 varables
