@@ -1,3 +1,8 @@
+libPath = '../lib';
+if index(path, libPath) == 0
+    addpath(libPath);
+end
+
 X = linspace(-7, 7, 100);
 Y =  (X .^ 2);
 
@@ -22,3 +27,5 @@ subplot(1,2,1);
 hold on;
 YY = [ones(size(X')(1), 1), (X') .^ 2] * grad';
 plot(X', YY, '-'); 
+
+
