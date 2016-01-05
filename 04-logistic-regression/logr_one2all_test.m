@@ -1,3 +1,8 @@
+libPath = '../lib';
+if index(path, libPath) == 0
+    addpath(libPath);
+end
+
 X = [1 2; 1 1; 2 2; 2 1; 1 7; 2 8; 1 9; 2 7; 5 6; 6 7; 6 6; 5 7];
 %X = [1; 2; 3; 4; 5; 6; 7];
 y = [1; 1; 1; 1; 2; 2; 2; 2; 3; 3; 3; 3];
@@ -19,7 +24,7 @@ alpha = 0.01;
 lambda = 0.1;
 count = 1000;
 
-[TT, CC] = logistic_regression_multi(X, y, [1 2 3], alpha, lambda, count);
+[TT, CC] = logr_one2all(X, y, [1 2 3], count, alpha, lambda);
 
 subplot(1, 3, 2);
 hold on;
@@ -36,10 +41,10 @@ hold on;
 
 tt = TT(:,2:size(TT)(2));
 m = size(X)(1);
-%for l=1:3
-%  r = sigmoid([ones(m,1), X] * tt(l,:)');
-%  printf('theta-%d res: \n', l);
-%  disp(r);
-%end;
+for l=1:3
+  r = sigmoid([ones(m,1), X] * tt(l,:)');
+  printf('theta-%d res: \n', l);
+  disp(r);
+end;
 
 sigmoid([ones(m,1), X] * tt')

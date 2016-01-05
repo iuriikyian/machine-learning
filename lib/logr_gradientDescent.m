@@ -6,7 +6,7 @@ function [grad, costs] = logr_gradientDescent(Theta, X, Y, count, alpha, lambda)
 	% Y	 - Mx1 vector of output data
 	% count  - count of iterations to run
 	% alpha	 - learning rate koefficient
-  % lambda - optional regularization parameter
+    % lambda - optional regularization parameter
 	%
 	% Returns:
 	%   grad - final thetas
