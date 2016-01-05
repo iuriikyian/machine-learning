@@ -1,3 +1,8 @@
+libPath = '../lib';
+if index(path, libPath) == 0
+    addpath(libPath);
+end
+
 X = [-2; -1; 1; 2; 3; 4; 5];
 Y = [0; 0; 0; 0; 1; 1; 1];
 
@@ -12,30 +17,29 @@ plot(X(idx0,:), Y(idx0,:), 'o');
 plot(X(idx1,:), Y(idx1,:), 'x');
 
 disp('initial theta and cost:');
-T = [0.5;0.5]
-s = log_reg_cost(X, Y, T)
-
+T = [0.5, 0.5]
+s = logr_cost(T, X, Y)
 alpha = 1;
-count = 200; %2000;
+count = 2000;
 
-[T, costs] = logistic_regression(X, Y, T, alpha, count);
+[T, costs] = logr_gradientDescent(T, X, Y, count, alpha);
 
 subplot(1,3,2);
 plot(costs(:,1), costs(:,2));
 printf('not regularized cost:\n');
-s = log_reg_cost(X, Y, T)
+s = logr_cost(T, X, Y)
 T
 % regularized calculation
-T = [0.5;0.5];
-lambda = 1;
-[T, costs] = logistic_regression_regularized(X, Y, T, alpha, lambda, count);
+T = [0.5, 0.5];
+lambda = 10;
+[T, costs] = logr_gradientDescent(T, X, Y, count, alpha, lambda);
 
 % logistic regression costs plot
 subplot(1,3,3);
 plot(costs(:,1), costs(:,2));
 
 printf('regularized cost:\n');
-s = log_reg_cost(X, Y, T)
+s = logr_cost(T, X, Y)
 T
 %disp('final theta and cost');
 %T
