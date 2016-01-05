@@ -15,7 +15,7 @@ function J = lr_cost(theta, X, Y, lambda)
   if nargin == 4
     t = theta;
     t(1,1) = 0;
-    r = (lambda / ( 2 * m)) * sum( t .^ 2)
+    r = (lambda / ( 2 * m)) * sum( t .^ 2);
     J = J + r;
   end;  
 end;
