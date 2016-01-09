@@ -19,8 +19,6 @@ function [J, grad] = lr_cost_grad(theta, X, Y, lambda)
   grad = ((XX * theta' - Y)' * XX) ./ m;
   
   % regularization
-%  t = theta;
-%  t(1,1) = 0;
   
   rJ = (lambda / ( 2 * m)) * sum( theta(:,2:end) .^ 2);
   J = J + rJ;
