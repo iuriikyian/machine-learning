@@ -18,7 +18,7 @@ count = 300;
 test_count = 10;
 fprintf("without regularization:\n");
 lambda = 0
-[grad, costs] = gradient_descent(@(theta) lr_cost_grad(theta, [X', (X') .^ 2], Y', 0), theta, count, alpha);
+[grad, costs] = gradient_descent(@(theta) lr_cost(theta, [X', (X') .^ 2], Y', 0), theta, count, alpha);
 fprintf("grad:\n");
 disp(grad)
 costs(1:test_count,:)
@@ -34,7 +34,7 @@ lambda = 5;
 fprintf("with regularization lambda: %d\n", lambda);
 
 theta = [1 1 1];
-[grad, costs] = gradient_descent(@(theta) lr_cost_grad(theta, [X', (X') .^ 2], Y', 0), theta, count, alpha);
+[grad, costs] = gradient_descent(@(theta) lr_cost(theta, [X', (X') .^ 2], Y', 0), theta, count, alpha);
 fprintf("grad:\n");
 disp(grad);
 costs(1:test_count,:)
