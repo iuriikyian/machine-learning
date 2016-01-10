@@ -11,7 +11,7 @@ lambda = 0;
 alpha = 0.01;
 count = 3000;
 
-[theta, costs] = gradient_descent(@(theta) lr_cost_grad(theta, X, Y, lambda), theta, count, alpha);
+[theta, costs] = gradient_descent(@(theta) lr_cost(theta, X, Y, lambda), theta, count, alpha);
 disp(theta);
 
 clf;

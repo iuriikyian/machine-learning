@@ -21,14 +21,14 @@ plot3(X(idx1,1), X(idx1,2), 'x');
 
 disp('initial theta and cost:');
 T = ones(1, size(X, 2) + 1)
-s = logr_cost(T, X, Y)
+[s, grad] = logr_cost(T, X, Y)
 
 alpha = 0.01;
 count = 2000;
 
 %[T, costs] = logistic_regression(X, Y, T, alpha, count);
 lambda = 1;
-[T, costs] = logr_gradientDescent(T, X, Y, count, alpha, lambda);
+[T, costs] = logr_gradient_descent(T, X, Y, count, alpha, lambda);
 
 % logistic regression costs plot
 subplot(1,2,2);
@@ -36,7 +36,7 @@ plot(costs(:,1), costs(:,2));
 
 disp('final theta and cost');
 T
-s = logr_cost(T, X, Y)
+[s, grad] = logr_cost(T, X, Y)
 
 printf('predictions:\n');
 x = [ones(size(X, 1), 1), X];

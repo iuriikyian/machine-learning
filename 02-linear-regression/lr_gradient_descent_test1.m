@@ -11,7 +11,7 @@ subplot(1,2,1);
 plot(X, Y, 'x');
 
 theta = [2, 1, 1];
-[J, grad] = lr_cost_grad(theta, [X', (X') .^ 2], Y')
+[J, grad] = lr_cost(theta, [X', (X') .^ 2], Y')
 
 alpha = 0.005;
 count = 3000;

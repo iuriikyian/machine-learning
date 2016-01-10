@@ -12,5 +12,5 @@ function [theta, costs] = lr_gradient_descent(theta, X, Y, lambda, count, alpha)
 	%   grad - final thetas
 	%   costs - count-x-2 matrix of 
 	%	[iteration index, cost value for the iteration]    
-    [theta, costs] = gradient_descent(@(theta) lr_cost_grad(theta, X, Y, lambda), theta, count, alpha);    
+    [theta, costs] = gradient_descent(@(theta) lr_cost(theta, X, Y, lambda), theta, count, alpha);    
 end;

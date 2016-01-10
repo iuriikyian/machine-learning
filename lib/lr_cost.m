@@ -1,4 +1,4 @@
-function [J, grad] = lr_cost_grad(theta, X, Y, lambda)
+function [J, grad] = lr_cost(theta, X, Y, lambda)
   % Cost and gradient for linear regression
   %
   % theta - 1xN matrix with theta values

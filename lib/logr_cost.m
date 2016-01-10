@@ -1,4 +1,4 @@
-function J = logr_cost(Theta, X, Y, lambda)
+function [J, grad] = logr_cost(Theta, X, Y, lambda)
   % Calculates logistic regression cost
   % Theta - 1-x-N+1 matrix of theta values
   % X - M-x-N x values
@@ -29,9 +29,12 @@ function J = logr_cost(Theta, X, Y, lambda)
   c1 = Y .* log(sig);
   c2 = (1 - Y) .* log(1 - sig);
   J = - (sum(c1 .+ c2) / m);
+  grad = (XX' * (sig - Y))' ./ m;
   
-  t = Theta;
-  t(1,1) = 0;
-  r = (lambda / (2 * m)) * sum(t .^ 2);
-  J = J + r;
+  % regularization
+  
+  rJ = (lambda / (2 * m)) * sum(Theta(:,2:end) .^ 2);
+  J = J + rJ;
+  rgrad = (lambda / m) * [0, Theta(:,2:end)];
+  grad = grad + rgrad;
 end;
