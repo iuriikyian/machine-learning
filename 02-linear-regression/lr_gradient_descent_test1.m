@@ -11,13 +11,14 @@ subplot(1,2,1);
 plot(X, Y, 'x');
 
 theta = [2, 1, 1];
-J = lr_cost(theta, [X', (X') .^ 2], Y')
+[J, grad] = lr_cost_grad(theta, [X', (X') .^ 2], Y')
 
 alpha = 0.005;
 count = 3000;
 fprintf("without regularization:\n");
 
-[grad, costs] = lr_gradientDescent([1, 1], (X') .^ 2, Y', count, alpha);
+theta = [1 1];
+[grad, costs] = lr_gradient_descent(theta, (X') .^ 2, Y', 0, count, alpha);
 fprintf("grad:\n");
 disp(grad)
 costs(1:10,:)
@@ -32,7 +33,7 @@ plot(X', YY, '-');
 lambda = 10;
 fprintf("with regularization lambda: %d\n", lambda);
 
-[grad, costs] = lr_gradientDescent([1, 1], (X') .^ 2, Y', count, alpha, lambda);
+[grad, costs] = lr_gradient_descent(theta, (X') .^ 2, Y', lambda, count, alpha);
 fprintf("grad:\n");
 disp(grad);
 costs(1:10,:)

@@ -9,17 +9,8 @@ function [theta, costs] = lr_gradient_descent(theta, X, Y, lambda, count, alpha)
 	% alpha	 - learning rate koefficient
   	%
 	% Returns:
-	%   theta - final thetas
+	%   grad - final thetas
 	%   costs - count-x-2 matrix of 
-	%	[iteration index, cost value for the iteration]
-	costs = [];
-	m = size(X)(1);
-    if nargin == 5
-        lambda = 0;
-    end;
-	for i = 1:count
-        [J, grad] = lr_cost_grad(theta, X, Y, lambda);
-        theta = theta - (grad .* alpha);
-        costs = [costs; [i, J]];
-    end;
+	%	[iteration index, cost value for the iteration]    
+    [theta, costs] = gradient_descent(@(theta) lr_cost_grad(theta, X, Y, lambda), theta, count, alpha);    
 end;

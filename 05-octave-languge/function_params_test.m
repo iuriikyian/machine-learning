@@ -13,3 +13,10 @@ end;
 
 foo(2, 5);
 foo(3);
+
+function res = goo(a, b = 6)
+  res = a + b;
+end;
+
+goo(5, 6)
+goo(5)
